@@ -22,7 +22,6 @@ typedef struct {
 
 void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr);
 int MyGPIO_Read(GPIO_TypeDef * GPIO , char GPIO_pin);
-void MyGPIO_set(GPIO_TypeDef * GPIO, char GPIO_pin);
 void MyGPIO_Reset(GPIO_TypeDef * GPIO, char GPIO_pin);
 void MyGPIO_Toggle(GPIO_TypeDef * GPIO, char GPIO_pin);
 

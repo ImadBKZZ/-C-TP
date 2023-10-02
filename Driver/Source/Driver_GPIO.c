@@ -48,7 +48,7 @@ void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr){
 			
 			case In_PullUp:
 				GPIOStructPtr->GPIO->CRL |= (In_PullUp << CurrentPin*4);
-				MyGPIO_set(CurrentGPIO, CurrentPin);
+				MyGPIO_Toggle(CurrentGPIO, CurrentPin);
 			
 			default :
 				GPIOStructPtr->GPIO->CRL |= (CurrentConf << CurrentPin*4);
@@ -67,7 +67,7 @@ void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr){
 			case In_PullUp:
 
 				GPIOStructPtr->GPIO->CRH |= (In_PullUp << (CurrentPin%8)*4);
-				MyGPIO_set(CurrentGPIO, CurrentPin);
+				MyGPIO_Toggle(CurrentGPIO, CurrentPin);
 			
 			default :
 
@@ -82,9 +82,6 @@ int MyGPIO_Read(GPIO_TypeDef * GPIO , char GPIO_pin){
 
 }
 
-void MyGPIO_set(GPIO_TypeDef * GPIO, char GPIO_pin){
-
-	GPIO->ODR |= (0x1 << GPIO_pin);
 }
 
 void MyGPIO_Reset(GPIO_TypeDef * GPIO, char GPIO_pin){
@@ -94,5 +91,5 @@ void MyGPIO_Reset(GPIO_TypeDef * GPIO, char GPIO_pin){
 
 void MyGPIO_Toggle(GPIO_TypeDef * GPIO, char GPIO_pin){
 
-
+	GPIO->ODR ^= (0x1 << GPIO_pin);
 }
