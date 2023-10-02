@@ -72,9 +72,11 @@ void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr){
 			default :
 
 				GPIOStructPtr->GPIO->CRH |= (CurrentConf << (CurrentPin%8)*4);
-	}
+			}
 	
+	}
 }
+
 
 int MyGPIO_Read(GPIO_TypeDef * GPIO , char GPIO_pin){
 
@@ -82,7 +84,7 @@ int MyGPIO_Read(GPIO_TypeDef * GPIO , char GPIO_pin){
 
 }
 
-}
+
 
 void MyGPIO_Reset(GPIO_TypeDef * GPIO, char GPIO_pin){
 
