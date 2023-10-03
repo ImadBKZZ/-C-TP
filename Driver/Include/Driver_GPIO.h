@@ -11,7 +11,7 @@ typedef struct {
 
 #define In_Floating 0x04
 #define In_PullDown 0x08
-#define In_PullUp 0x08
+#define In_PullUp 0x18
 #define In_Analog 0x00
 
 #define Out_Ppull 0x02
