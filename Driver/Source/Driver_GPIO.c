@@ -46,7 +46,7 @@ void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr){
 				MyGPIO_Reset(GPIOStructPtr->GPIO, CurrentPin);
 		}
 		else if (CurrentConf == In_PullUp){
-				GPIOStructPtr->GPIO->CRL |= (In_PullUp << CurrentPin*4);
+				GPIOStructPtr->GPIO->CRL |= (In_PullDown << CurrentPin*4);
 				MyGPIO_Toggle(GPIOStructPtr->GPIO, CurrentPin);
 		}
 		else{
@@ -57,15 +57,15 @@ void MyGPIO_Init(MyGPIO_struct_TypeDef * GPIOStructPtr){
 			GPIOStructPtr->GPIO->CRH &= ~(0xF << (CurrentPin%8)*4);
 		
 		if (CurrentConf == In_PullDown){
-				GPIOStructPtr->GPIO->CRL |= (In_PullDown << (CurrentPin%8*4));
+				GPIOStructPtr->GPIO->CRH |= (In_PullDown << (CurrentPin%8)*4);
 				MyGPIO_Reset(GPIOStructPtr->GPIO, CurrentPin);
 		}
 		else if (CurrentConf == In_PullUp){
-				GPIOStructPtr->GPIO->CRL |= (In_PullUp << (CurrentPin%8*4));
+				GPIOStructPtr->GPIO->CRH |= (In_PullDown << (CurrentPin%8)*4);
 				MyGPIO_Toggle(GPIOStructPtr->GPIO, CurrentPin);
 		}
 		else{
-			GPIOStructPtr->GPIO->CRL |= (CurrentConf << (CurrentPin%8*4));
+			GPIOStructPtr->GPIO->CRL |= (CurrentConf << (CurrentPin%8)*4);
 	
 		}
 	}
